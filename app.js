@@ -9,14 +9,10 @@ rule1.minute  = times1;
 schedule.scheduleJob(rule1, function(){  
 	var curTime = new Date();
 	callfile.execFile('./script.sh',[],null,function (err, stdout, stderr) {
-    	//callback(err, stdout, stderr);
     	fs.writeFile('./doc.log', 'log:'+curTime+":"+stdout+"\r\n",{'flag':'a'},function(err){
 	   	 	if(err) console.log('Write Failed');
 	   	 	else console.log('Write Log Success');
 		});
-    	console.log(err);
-    	console.log(stdout);
-    	console.log(stderr);
 	});
 });
 
